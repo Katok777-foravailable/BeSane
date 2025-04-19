@@ -3,3 +3,12 @@ name: Besane
 version: 1.0
 api-version: 1.16
 author: Katok777
+description: "Плагин на рассудок"
+
+permissions:
+  besane.admin:
+    default: op
+
+commands:
+  besane:
+    usage: /besane <args>
