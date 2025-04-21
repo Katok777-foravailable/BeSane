@@ -21,7 +21,7 @@ public class ConfigManager implements IConfigManager {
 
     @Override
     public void loadConfigFile(String path) throws FileNotFoundException, IOException, InvalidConfigurationException {
-        File configFile = new File(instance.getDataFolder() + File.pathSeparator + path);
+        File configFile = new File(instance.getDataFolder() + File.separator + path);
 
         if(!configFile.exists()) instance.saveResource(path, false);
 

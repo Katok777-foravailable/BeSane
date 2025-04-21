@@ -13,13 +13,13 @@ public class SanityChangeEvent extends Event implements Cancellable {
     private final int panicHeight;
     private final Float currentSanity;
     private final Player player;
-    private Float decreaseSanity;
+    private Float sanityChange;
 
-    public SanityChangeEvent(int panicHeight, Float currentSanity, Player player, Float decreaseSanity) {
+    public SanityChangeEvent(int panicHeight, Float currentSanity, Player player, Float sanityChange) {
         this.panicHeight = panicHeight;
         this.currentSanity = currentSanity;
         this.player = player;
-        this.decreaseSanity = decreaseSanity;
+        this.sanityChange = sanityChange;
     }
 
     public Player getPlayer() {
@@ -34,12 +34,12 @@ public class SanityChangeEvent extends Event implements Cancellable {
         return panicHeight;
     }
 
-    public Float getDecreaseSanity() {
-        return decreaseSanity;
+    public Float getSanityChange() {
+        return sanityChange;
     }
 
-    public void setDecreaseSanity(Float decreaseSanity) {
-        this.decreaseSanity = decreaseSanity;
+    public void setSanityChange(Float sanityChange) {
+        this.sanityChange = sanityChange;
     }
 
     @Override

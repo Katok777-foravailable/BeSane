@@ -1,4 +1,17 @@
 panic-height: 40 # минимальная высота, после которой будет снижаться рассудок
-sanity-decrease: 0.1 # скорость снижения рассудка
-sanity-increase: 0.1 # скорость повышения рассудка
-sanity-decrease-expansion: 0.1 # насколько увеличивается скорость снижения рассудка при каждом блоке, ниже минимальной высоты
+sanity-decrease: 0.1 # скорость снижения рассудка каждую секунду
+sanity-increase: 0.1 # скорость повышения рассудка каждую секунду
+
+# насколько увеличивается скорость снижения/повышения рассудка при ниже/выше panic-height
+# то есть, если panic-height: 40, а игрок на высоте 25, то выводиться формула "рассудок - (sanity-decrease * sanity-expansion * (40 - 25))"
+# похожая формула для повышения рассудка, то есть, если игрок на высоте 60 то: "рассудок + (sanity-increase * sanity-expansion * (60 - 40))"
+sanity-expansion: 0.1 
+
+# эффекты смотреть здесь -> https://helpch.at/docs/1.16.5/org/bukkit/potion/PotionEffectType.html
+sanity-decrease-effects:
+  SLOW_DIGGING: 
+    percent: 50 # <эффект>: <при каком проценте (и ниже) рассудка будет выдаваться эффект>
+    level: 2 # уровень эффекта
+  BLINDNESS:
+    percent: 20
+    level: 1

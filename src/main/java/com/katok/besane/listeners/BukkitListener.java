@@ -27,16 +27,7 @@ public class BukkitListener implements Listener {
         // мы узнаем высоту каждый раз, из-за того, что кто-то может перезагрузить конфиг, и значение уже будет другое
         int panicHeight = configManager.getConfiguration("config.yml").getInt("panic-height");
 
-        if(e.getPlayer().getLocation().getBlockY() > panicHeight) {
-            if(!playersSanity.containsKey(e.getPlayer().getUniqueId())) return;
-
-            PlayerLeaveFromPanicHeight event = new PlayerLeaveFromPanicHeight(playersSanity.get(e.getPlayer().getUniqueId()), e.getPlayer());
-            Bukkit.getPluginManager().callEvent(event);
-
-            if(event.isCancelled()) return;
-
-            playersSanity.remove(e.getPlayer().getUniqueId());
-        } else {
+        if(e.getPlayer().getLocation().getBlockY() < panicHeight) {
             if(playersSanity.containsKey(e.getPlayer().getUniqueId())) return;
 
             PlayerEnterInPanicHeight event = new PlayerEnterInPanicHeight(playersSanity.get(e.getPlayer().getUniqueId()), e.getPlayer());
@@ -44,8 +35,8 @@ public class BukkitListener implements Listener {
 
             if(event.isCancelled()) return;
 
-            playersSanity.put(e.getPlayer().getUniqueId(), 0f);
-        } // TODO: пс, ты из будущего, надо ещё настроить таски чтобы была усталость, сделать эффекты, и все такое
+            playersSanity.put(e.getPlayer().getUniqueId(), 100f);
+        }
     }
 
     @EventHandler
