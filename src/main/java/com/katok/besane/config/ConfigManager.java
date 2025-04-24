@@ -40,4 +40,13 @@ public class ConfigManager implements IConfigManager {
     public YamlConfiguration getConfiguration(String path) {
         return configs.get(path);
     }
+
+    @Override
+    public void saveConfiguration(String path) throws IOException {
+        File configFile = new File(instance.getDataFolder() + File.separator + path);
+
+        if(!configFile.exists()) instance.saveResource(path, false);
+
+        configs.get(path).save(configFile);
+    }
 }

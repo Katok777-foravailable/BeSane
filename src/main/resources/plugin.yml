@@ -1,9 +1,10 @@
-main: com.katok.besane.Besane
+main: "com.katok.besane.Besane"
 name: Besane
 version: 1.0
 api-version: 1.16
 author: Katok777
 description: "Плагин на рассудок"
+softdepend: [PlaceholderAPI]
 
 permissions:
   besane.admin:
@@ -12,3 +13,4 @@ permissions:
 commands:
   besane:
     usage: /besane <args>
+    permission: besane.admin

@@ -10,8 +10,8 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import com.katok.besane.config.IConfigManager;
-import com.katok.besane.events.PlayerEnterInPanicHeight;
-import com.katok.besane.events.PlayerLeaveFromPanicHeight;
+import com.katok.besane.events.PlayerEnterInPanicHeightEvent;
+import com.katok.besane.events.PlayerLeaveFromPanicHeightEvent;
 
 public class BukkitListener implements Listener {
     private final IConfigManager configManager;
@@ -30,7 +30,7 @@ public class BukkitListener implements Listener {
         if(e.getPlayer().getLocation().getBlockY() < panicHeight) {
             if(playersSanity.containsKey(e.getPlayer().getUniqueId())) return;
 
-            PlayerEnterInPanicHeight event = new PlayerEnterInPanicHeight(playersSanity.get(e.getPlayer().getUniqueId()), e.getPlayer());
+            PlayerEnterInPanicHeightEvent event = new PlayerEnterInPanicHeightEvent(playersSanity.get(e.getPlayer().getUniqueId()), e.getPlayer());
             Bukkit.getPluginManager().callEvent(event);
 
             if(event.isCancelled()) return;
@@ -43,7 +43,7 @@ public class BukkitListener implements Listener {
     public void onQuit(PlayerQuitEvent e) {
         if(!playersSanity.containsKey(e.getPlayer().getUniqueId())) return;
 
-        PlayerLeaveFromPanicHeight event = new PlayerLeaveFromPanicHeight(playersSanity.get(e.getPlayer().getUniqueId()), e.getPlayer());
+        PlayerLeaveFromPanicHeightEvent event = new PlayerLeaveFromPanicHeightEvent(playersSanity.get(e.getPlayer().getUniqueId()), e.getPlayer());
         Bukkit.getPluginManager().callEvent(event);
 
         playersSanity.remove(e.getPlayer().getUniqueId());

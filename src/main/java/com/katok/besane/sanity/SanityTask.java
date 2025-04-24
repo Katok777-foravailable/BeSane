@@ -52,7 +52,7 @@ public class SanityTask extends BukkitRunnable {
                 Bukkit.getPluginManager().callEvent(event);
                 if(event.isCancelled()) continue;
 
-                panic += event.getSanityChange();
+                panic = Math.max(Math.min(panic + event.getSanityChange(), 100), 0);
                 playersSanity.replace(id, panic);
             } else {
                 if(panic < 0) {
@@ -67,7 +67,7 @@ public class SanityTask extends BukkitRunnable {
                 Bukkit.getPluginManager().callEvent(event);
                 if(event.isCancelled()) continue;
 
-                panic += event.getSanityChange();
+                panic = Math.max(Math.min(panic + event.getSanityChange(), 100), 0);
                 playersSanity.replace(id, panic);
             }
         }

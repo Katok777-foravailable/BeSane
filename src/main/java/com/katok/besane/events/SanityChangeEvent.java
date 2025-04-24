@@ -30,7 +30,7 @@ public class SanityChangeEvent extends Event implements Cancellable {
         return currentSanity;
     }
 
-    public int getpanicHeight() {
+    public int getPanicHeight() {
         return panicHeight;
     }
 

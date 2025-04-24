@@ -1,17 +1,30 @@
 panic-height: 40 # минимальная высота, после которой будет снижаться рассудок
 sanity-decrease: 0.1 # скорость снижения рассудка каждую секунду
-sanity-increase: 0.1 # скорость повышения рассудка каждую секунду
+sanity-increase: 1 # скорость повышения рассудка каждую секунду
 
 # насколько увеличивается скорость снижения/повышения рассудка при ниже/выше panic-height
-# то есть, если panic-height: 40, а игрок на высоте 25, то выводиться формула "рассудок - (sanity-decrease * sanity-expansion * (40 - 25))"
+# то есть, если panic-height: 40, а игрок на высоте 25, то выводиться формула "рассудок + (sanity-decrease * sanity-expansion * (25 - 40))"
 # похожая формула для повышения рассудка, то есть, если игрок на высоте 60 то: "рассудок + (sanity-increase * sanity-expansion * (60 - 40))"
-sanity-expansion: 0.1 
+sanity-expansion: 0.05 
 
 # эффекты смотреть здесь -> https://helpch.at/docs/1.16.5/org/bukkit/potion/PotionEffectType.html
 sanity-decrease-effects:
   SLOW_DIGGING: 
-    percent: 50 # <эффект>: <при каком проценте (и ниже) рассудка будет выдаваться эффект>
+    percent: 50 # при каком проценте (и ниже) рассудка будет выдаваться эффект
     level: 2 # уровень эффекта
   BLINDNESS:
     percent: 20
     level: 1
+
+messages:
+  help:
+    - "&#5fd45fКоманды плагина &l&#2ee92eBesane:"
+    - "&#5ae95a/besane reload &#5fd45f- перезагружает конфигурацию плагина."
+    - "&#5ae95a/besane setheight &#FF4500<height> &#5fd45f- устанавливает минимальную высоту для снижения рассудка."
+    - "&#5ae95a/besane sanity &#FF4500<player> &#5fd45f- показывает уровень рассудка указанного игрока."
+    - "&#5ae95a/besane sanity set &#FF4500<player> <value> &#5fd45f- устанавливает уровень рассудка указанного игрока."
+  reload-successfull: "&#5fd45fВы успешно перезагрузили конфигурацию плагина."
+  setheight-successfull: "&#5fd45fВы успешно поменяли минимальную высоту для снижения рассудка."
+  player-dont-exist: "&#FF0000Этот игрок не в сети!"
+  player-sanity: "&#5fd45fУ этого игрока &#5ae95a{sanity}% &#5fd45fадекватности."
+  player-set-sanity: "&#5fd45fВы поменяли адекватность игрока &#5ae95a{name} &#5fd45fна &#5ae95a{sanity}%&#5fd45f!"
